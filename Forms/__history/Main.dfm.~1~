@@ -11,7 +11,6 @@ object MainForm: TMainForm
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object BtnTree: TButton
@@ -21,6 +20,5 @@ object MainForm: TMainForm
     Height = 89
     Caption = #1044#1077#1088#1077#1074#1086
     TabOrder = 0
-    OnClick = BtnTreeClick
   end
 end

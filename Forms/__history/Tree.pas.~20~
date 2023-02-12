@@ -38,17 +38,15 @@ end;
 function TFormTree._Release: Integer;
 begin
   Result := InterlockedDecrement(FRefCount);
-  if Result=0 then
+  if Result<=0 then
     Self.Free;
 end;
 
-// При закрытии формы освобождаем ресурсы
 procedure TFormTree.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
    Self.FreeOnRelease;
 end;
 
-// Возвращаем объект формы
 function TFormTree.GetTreeForm: TForm;
 begin
   Result:= Self;

@@ -1,4 +1,3 @@
-{ Форма "Дерево" }
 unit Tree;
 
 interface
@@ -14,8 +13,8 @@ type
     { Private declarations }
   protected
    FRefCount: Integer;
-   function _AddRef: Integer; stdcall;  // управление подсчетом ссылок (увеличение значения счетчика FRefCount)
-   function _Release: Integer; stdcall; // управление подсчетом ссылок (уменьшение значения счетчика FRefCount)
+   //function _AddRef: Integer; stdcall;
+   //function _Release: Integer; stdcall;
   public
     { Public declarations }
   function GetTreeForm: TForm;
@@ -28,27 +27,23 @@ implementation
 
 {$R *.dfm}
 
-// Управление подсчетом ссылок (увеличение значения счетчика FRefCount)
-function TFormTree._AddRef: Integer;
-begin
-  Result := InterlockedIncrement(FRefCount);
-end;
+//function TFormTree._AddRef: Integer;
+//begin
+  //Result := InterlockedIncrement(FRefCount);
+//end;
 
-// Управление подсчетом ссылок (уменьшение значения счетчика FRefCount)
-function TFormTree._Release: Integer;
-begin
-  Result := InterlockedDecrement(FRefCount);
-  if Result=0 then
-    Self.Free;
-end;
+//function TFormTree._Release: Integer;
+//begin
+  //Result := InterlockedDecrement(FRefCount);
+  //if Result<=0 then
+    //Self.Free;
+//end;
 
-// При закрытии формы освобождаем ресурсы
 procedure TFormTree.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
    Self.FreeOnRelease;
 end;
 
-// Возвращаем объект формы
 function TFormTree.GetTreeForm: TForm;
 begin
   Result:= Self;

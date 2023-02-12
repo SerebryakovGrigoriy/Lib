@@ -1,4 +1,3 @@
-{ Форма "Основная" }
 unit Main;
 
 interface
@@ -14,6 +13,7 @@ type
     BtnTree: TButton;
     procedure BtnTreeClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     FSecondaryForm: ITreeFormInterface;
@@ -28,7 +28,7 @@ implementation
 
 {$R *.dfm}
 
-// Реализация обработчика кнопки "Дерево"
+
 procedure TMainForm.BtnTreeClick(Sender: TObject);
 begin
  if (Assigned(FSecondaryForm)) then
@@ -37,18 +37,22 @@ begin
  end;
 end;
 
-// Анализ наличия в контейнере реализации интерфейса ITreeFormInterface
 procedure TMainForm.FormActivate(Sender: TObject);
 begin
  try
-    // если в контейнере обнаружена реализация интерфейса ITreeFormInterface, то записать экземпляр объекта в переменную FSecondaryForm
     FSecondaryForm:= Globalcontainer.Resolve<ITreeFormInterface>;
-    // разрешаем отображение кнопки "Дерево"
     BtnTree.Visible:=true;
   except
-    // запрет отображения кнопки "Дерево" в случае если  реализация интерфейса ITreeFormInterface не найдена в контейнере
     BtnTree.Visible:=false;
   end;
+end;
+
+procedure TMainForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+// if (Assigned(FSecondaryForm)) then
+// begin
+//    FSecondaryForm._Release;
+// end;
 end;
 
 end.

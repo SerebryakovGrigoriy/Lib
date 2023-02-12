@@ -1,4 +1,3 @@
-{ Форма "Основная" }
 unit Main;
 
 interface

@@ -1,4 +1,3 @@
-{ Форма "Основная" }
 unit Main;
 
 interface
@@ -28,7 +27,7 @@ implementation
 
 {$R *.dfm}
 
-// Реализация обработчика кнопки "Дерево"
+
 procedure TMainForm.BtnTreeClick(Sender: TObject);
 begin
  if (Assigned(FSecondaryForm)) then
