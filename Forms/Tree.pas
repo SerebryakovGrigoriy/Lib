@@ -18,7 +18,7 @@ type
    function _Release: Integer; stdcall; // управление подсчетом ссылок (уменьшение значения счетчика FRefCount)
   public
     { Public declarations }
-  function GetTreeForm: TForm;
+  function GetForm: TForm;
   end;
 
 var
@@ -49,7 +49,7 @@ begin
 end;
 
 // Возвращаем объект формы
-function TFormTree.GetTreeForm: TForm;
+function TFormTree.GetForm: TForm;
 begin
   Result:= Self;
 end;
